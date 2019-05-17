@@ -1,0 +1,49 @@
+{
+  "name": "payment-service",
+  "version": "1.0.0",
+  "description": "Demo microservice to present payment app flow ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec src/**/*.spec.js",
+    "start": "node src/index.js",
+    "lint": "standard --verbose | snazzy",
+    "node-debug": "DEBUG=express* node src/index.js",
+    "chrome-debug": "node --debug-brk --inspect src/index.js",
+    "coverage": "istanbul cover _mocha $(find ./src -name \"*.spec.js\" -not -path \"./node_modules/*\") "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://EvolverPawan@bitbucket.org/EvolverPawan/order-management-microservice.git"
+  },
+  "keywords": [
+    "express",
+    "mongodb",
+    "docker",
+    "microservice"
+  ],
+  "author": "Pawan",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/EvolverPawan/order-management-microservice#readme",
+  "devDependencies": {
+    "eslint": "^3.13.1",
+    "mocha": "^3.2.0",
+    "nodejs-dashboard": "^0.3.0",
+    "should": "^11.1.2",
+    "snazzy": "^6.0.0",
+    "standard": "^8.6.0",
+    "supertest": "^2.0.1"
+  },
+  "dependencies": {
+    "awilix": "^2.2.2",
+    "body-parser": "^1.16.0",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "helmet": "^3.4.0",
+    "http-status": "^0.2.5",
+    "joi": "^10.2.0",
+    "mongodb": "^3.2.2",
+    "morgan": "^1.7.0",
+    "npm-shrinkwrap": "^6.1.0",
+    "spdy": "^3.4.4"
+  }
+}

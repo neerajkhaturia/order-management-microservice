@@ -1,0 +1,65 @@
+#%RAML 1.0
+title: Order Service
+version: v1
+baseUri: /orders
+
+types:
+  order:
+    properties:
+      totalAmount: number,
+      deliveryAddress: string,
+      highlights: string,
+      seller: string,
+      color: string,
+      productId: string,
+      quantity: number,
+      schedule: number
+  User:
+    properties:
+      name: string
+      lastname: string
+      email: string
+      creditcard: object
+      phoneNumber?: string
+      membership?: number
+
+
+resourceTypes:
+  GET:
+    get:
+      responses:
+        200:
+          body:
+
+  POST:
+    post:
+      body:
+        application/json:
+          type: <<item>>
+          type: <<item2>>
+      responses:
+        201:
+          body:
+            application/json:
+              type: <<item3>>
+  
+  POST:
+    post:
+      body:
+        application/json:
+      responses:
+        201:
+          body:
+
+  /{orderId}:
+    type:  { GET: {} }
+    description: This route is to check status of the order. It returns order json object
+
+  /:
+    type:   { POST: {item : order, item2 : User} }
+    description: This route requires valid user and order json objects. After validation, payment service is called to process payment.
+    If the payment is succefull, the order status is changed to delivered after x seconds.
+
+  /{orderId}/cancel:
+    type:   { POST: {} }
+    description: This route changes the status of order to Cancelled. Only 'created' and 'accepted' can be cancelled.

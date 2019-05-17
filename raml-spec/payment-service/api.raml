@@ -1,0 +1,33 @@
+#%RAML 1.0
+title: Payment Service
+version: v1
+baseUri: /payment
+
+types:
+  paymentOrder:
+    properties:
+      userName: string
+      currency: string
+      number: string
+      cvc: number
+      exp_month: number
+      exp_year: number
+      amount: number
+      description: string
+
+
+resourceTypes:
+  POST:
+    post:
+      body:
+        application/json:
+          type: <<item>>
+      responses:
+        201:
+          body:
+            application/json:
+              type: <<item2>>
+
+
+/makePurchase:
+  type:   { POST: {item : PaymentOrder} }
